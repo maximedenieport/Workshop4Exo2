@@ -87,7 +87,7 @@ int inserer(stockage* listeObjet) {
 
 int ajouter(stockage* listeObjet) {
     objet2d* objet;
-    cout << "Quel objet voulez-vous ajouter a la fin de la liste ?" << endl;
+    cout << "Quel objet voulez-vous ajouter a la fin de la chaine ?" << endl;
     char nom; int longueur, largeur;
     cout << " 1 - Rectangle ou 2 - Carre " << endl;
     do {
@@ -103,16 +103,38 @@ int ajouter(stockage* listeObjet) {
         objet = new cube(longueur);
     }
     listeObjet->AtTail(objet);
+    cout << "Objet ajoute a la fin de votre chaine" << endl;
     return 0;
 }
 
 int remplacerTete(stockage* listeObjet) {
-
+    objet2d* objet;
+    cout << "Quel objet va deveninr la tete de votre chaine ?" << endl;
+    char nom; int longueur, largeur;
+    cout << " 1 - Rectangle ou 2 - Carre " << endl;
+    do {
+        cin >> nom;
+    } while ((nom != '1') && (nom != '2'));
+    if (nom == '1') {
+        cout << "Longueur du rectangle " << endl; cin >> longueur;
+        cout << "Largeur du rectangle " << endl; cin >> largeur;
+        objet = new rectangle(longueur, largeur);
+    }
+    else {
+        cout << "Cote du carre " << endl; cin >> longueur;
+        objet = new cube(longueur);
+    }
+    listeObjet->AtHead(objet);
+    cout << "Objet ajoute a la tete de votre chaine" << endl;
     return 0;
 }
 
 int supprimer(stockage* listeObjet) {
-
+    int index;
+    cout << "Quel maillon voulez-vous supprimer ?" << endl;
+    cin >> index;
+    listeObjet->suppr(index);
+    cout << "Maillon supprime avec succes" << endl;
     return 0;
 }
 
